@@ -8,9 +8,9 @@ impl<T> SlicesBitAnd<T> for [T] where T: PartialEq {
         if self.len() != other.len() { return None; }
 
         let mut bit: usize = 0;
-        for i in 0..self.len() {
+        for (a, b) in self.iter().zip(other) {
             bit <<= 1;
-            if self[i] == other[i] {
+            if a == b {
                 bit |= 1;
             } else {
                 bit |= 0;
@@ -23,8 +23,8 @@ impl<T> SlicesBitAnd<T> for [T] where T: PartialEq {
         if self.len() != other.len() { return None; }
 
         let mut bit = "".to_string();
-        for i in 0..self.len() {
-            if self[i] == other[i] {
+        for (a, b) in self.iter().zip(other) {
+            if a == b {
                 bit.push('1');
             } else {
                 bit.push('0');
